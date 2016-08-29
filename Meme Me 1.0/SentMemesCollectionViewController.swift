@@ -21,9 +21,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -66,12 +63,9 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let meme = memes[indexPath.item]
     
         // Configure the cell
-//        cell.topTextField.text = meme.topText
-//        cell.bottomTextField.text = meme.bottomText
         let imageView = UIImageView(image: meme.memedImage)
         cell.backgroundView = imageView
 
-    
         return cell
     }
     
@@ -82,7 +76,5 @@ class SentMemesCollectionViewController: UICollectionViewController {
         self.navigationController?.pushViewController(detailVC, animated: true)
         
     }
-    
-    // MARK: UICollectionViewDelegate
 
 }

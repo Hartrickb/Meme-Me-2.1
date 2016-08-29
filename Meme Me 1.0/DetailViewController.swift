@@ -34,9 +34,7 @@ class DetailViewController: UIViewController {
         self.tabBarController?.tabBar.hidden = false
     }
     
-    // !!!!!
-    // TODO: Edit button does not work!
-    // !!!!!
+    // Gets called when Edit button is pressed
     func showDetailVC () {
         performSegueWithIdentifier("detailToEdit", sender: nil)
     }
@@ -46,21 +44,7 @@ class DetailViewController: UIViewController {
             let editController = segue.destinationViewController as! MemeEditorViewController
             
             editController.meme = self.meme
-//            editController.image = meme.originalImage
-//            editController.topText = meme.topText
-//            editController.bottomText = meme.bottomText
         }
     }
-    
-//    @IBAction func editMemeButton(sender: AnyObject) {
-//        var editController: MemeEditorViewController
-//        editController = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
-//        
-//        editController.imagePickerView.image = meme.originalImage
-//        editController.topTextField.text = meme.topText
-//        editController.bottomTextField.text = meme.bottomText
-//        
-//        presentViewController(editController, animated: true, completion: nil)
-//    }
     
 }

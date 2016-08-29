@@ -14,9 +14,6 @@ class SentMemesTableViewController: UITableViewController {
         get {
             return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
         }
-//        set {
-//            (UIApplication.sharedApplication().delegate as! AppDelegate).memes = memes
-//        }
     }
     var appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
@@ -26,12 +23,6 @@ class SentMemesTableViewController: UITableViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-//         Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -80,9 +71,7 @@ class SentMemesTableViewController: UITableViewController {
             // Delete the row from the data source
             appDelegate.memes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }   
     }
     
 }
