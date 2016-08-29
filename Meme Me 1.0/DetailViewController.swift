@@ -46,9 +46,9 @@ class DetailViewController: UIViewController {
             let editController = segue.destinationViewController as! MemeEditorViewController
             
             editController.meme = self.meme
-            editController.image = meme.originalImage
-            editController.topText = meme.topText
-            editController.bottomText = meme.bottomText
+//            editController.image = meme.originalImage
+//            editController.topText = meme.topText
+//            editController.bottomText = meme.bottomText
         }
     }
     

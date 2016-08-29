@@ -23,9 +23,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     var textSize: CGFloat = 40
     var meme: Meme? = nil
-    var topText: String?
-    var bottomText: String?
-    var image: UIImage?
+//    var topText: String?
+//    var bottomText: String?
+//    var image: UIImage?
     
     // Assign Delegates
     let memeTextDelegate = MemeTextDelegate()
@@ -37,16 +37,20 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         setUpTextFields()
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
-        enableOrHideButtons()
         
         if meme != nil {
             imagePickerView.contentMode = .ScaleAspectFit
-            imagePickerView.image = image
-            topTextField.text = topText
+            imagePickerView.image = meme!.originalImage
+            textSize = meme!.textSize
+            print("textSize: \(meme!.textSize)")
+            topTextField.text = meme!.topText
             print(topTextField.text)
-            bottomTextField.text = bottomText
+            bottomTextField.text = meme!.bottomText
             print(bottomTextField.text)
+            setUpTextFields()
         }
+        
+        enableOrHideButtons()
         
     }
     
@@ -166,7 +170,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func save() {
         // Create the meme
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage(), textSize: self.textSize)
         
         // Add it to the memes array in the Application Delegate
         let object = UIApplication.sharedApplication().delegate
