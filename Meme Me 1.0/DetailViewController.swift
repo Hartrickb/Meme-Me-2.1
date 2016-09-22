@@ -14,34 +14,28 @@ class DetailViewController: UIViewController {
     
     var meme: Meme!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.hidden = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(DetailViewController.showDetailVC))
+        self.tabBarController?.tabBar.isHidden = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(DetailViewController.showDetailVC))
         
         detailImageView.image = meme.memedImage
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // Gets called when Edit button is pressed
     func showDetailVC () {
-        performSegueWithIdentifier("detailToEdit", sender: nil)
+        performSegue(withIdentifier: "detailToEdit", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailToEdit" {
-            let editController = segue.destinationViewController as! MemeEditorViewController
+            let editController = segue.destination as! MemeEditorViewController
             
             editController.meme = self.meme
         }
